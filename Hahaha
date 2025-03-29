@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        @keyframes backgroundChange {
+            0% { background-color: red; }
+            25% { background-color: blue; }
+            50% { background-color: yellow; }
+            75% { background-color: purple; }
+            100% { background-color: green; }
+        }
+        body {
+            overflow: hidden;
+            margin: 0;
+            animation: backgroundChange 3s infinite alternate;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+            color: white;
+            text-shadow: 2px 2px black;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 30px;
+            color: white;
+            text-shadow: 2px 2px black;
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: float 5s linear infinite;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -15px;
+            left: 0;
+        }
+        .heart::after {
+            left: 15px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-200px) scale(1.2); opacity: 0.8; }
+            100% { transform: translateY(-400px) scale(1); opacity: 0; }
+        }
+        .big-heart {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: heartbeat 1s infinite;
+        }
+        .big-heart::before,
+        .big-heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .big-heart::before {
+            top: -50px;
+            left: 0;
+        }
+        .big-heart::after {
+            left: 50px;
+            top: 0;
+        }
+        @keyframes heartbeat {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday Haha</h1>
+    <h2>Chúc mãi hahahahahaha</h2>
+    <div class="big-heart"></div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 200);
+    </script>
+</body>
+</html>
